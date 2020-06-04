@@ -1,0 +1,86 @@
+/* --------------------------------
+* article contents
+* -------------------------------- */
+.article-contents {
+  margin-bottom: 30px;
+}
+
+
+/* --------------------------------
+* slide show
+* -------------------------------- */
+.slide-show {
+  margin-bottom: 15px;
+}
+
+
+/* --------------------------------
+* main contents
+* -------------------------------- */
+.main-contents {
+  display: flex;
+  margin-bottom: 30px;
+}
+.main-content {
+  flex: 2;
+}
+.side-content {
+  flex: 1;
+}
+
+
+/* --------------------------------
+ * news
+ * -------------------------------- */
+.scroll-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-left: -40px;
+  margin-bottom: 30px;
+  list-style-type: none;
+}
+.scroll-list .scroll-item a {
+  display: block;
+  padding: 15px 20px;
+  color: #333;
+  font-size: 0;
+  transition: background-color 0.1s;
+}
+.scroll-list .scroll-item:nth-of-type(even) a {
+  background: url('../images/bg-slash.gif');
+  background-color: #fafafa;
+}
+.scroll-list .scroll-item a:hover {
+  background-color: #eff7ff;
+}
+.scroll-list .scroll-item a > * {
+  font-size: 1.2rem;
+  line-height: 14px;
+  letter-spacing: 1px;
+  line-height: 20px;
+}
+.scroll-list .date {
+  display: inline-block;
+  width: 18%;
+  font-weight: bold;
+}
+.scroll-list .category {
+  display: inline-block;
+  width: 10%;
+  border-radius: 5px;
+  background-color: #d03c56;
+  color: #fff;
+  text-align: center;
+}
+.scroll-list .category.news {
+  background-color: #2c3c53;
+}
+.scroll-list .title {
+  display: inline-block;
+  width: 72%;
+  padding-left: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+}
