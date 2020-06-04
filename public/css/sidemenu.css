@@ -1,0 +1,82 @@
+/* --------------------------------
+ * sidemenu
+ * -------------------------------- */
+.sidemenu {
+  flex: 2;
+  background-color: #f8fff7;
+  padding-left: 10px;
+  z-index: 1;
+  height: 100%;
+}
+.sidemenu .heading {
+  margin-left: -10px;
+}
+.ranking {
+  list-style-type: none;
+  counter-reset: ranking;
+  margin-left: -30px;
+}
+.ranking .ranking-item {
+  position: relative;
+  margin-top: 15px;
+  display: flex;
+}
+.ranking .ranking-item a {
+  display: block;
+  font-size: 0;
+  transition: opacity 0.15s;
+}
+.ranking .ranking-item a:hover {
+  opacity: 0.8;
+}
+.ranking .image {
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+}
+.ranking .order {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #aaa;
+  text-align: center;
+  font-weight: bold;
+  line-height: 18px;
+}
+.ranking .order::before {
+  content: counter(ranking);
+  counter-increment: ranking;
+  font-size: 1.0rem;
+}
+.ranking .ranking-item:nth-of-type(1) .order,
+.ranking .ranking-item:nth-of-type(2) .order,
+.ranking .ranking-item:nth-of-type(3) .order {
+  line-height: 20px;
+  border: none;
+  color: #fff;
+  font-weight: normal;
+  line-height: 18px;
+}
+.ranking .ranking-item:nth-of-type(1) .order {
+  background-color: #dab413;
+}
+.ranking .ranking-item:nth-of-type(2) .order {
+  background-color: #6e7b84;
+}
+.ranking .ranking-item:nth-of-type(3) .order {
+  background-color: #a0541a;
+}
+.ranking .title {
+  display: inline-block;
+  width: 180px;
+  color: #000;
+  vertical-align: top;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  overflow: hidden;
+}
