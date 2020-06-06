@@ -21,7 +21,7 @@
           <!--before login-->
           @guest
           <li class="nav-item">
-            <a class="login nav-link" href=""><i class="login-icon fas fa-sign-in-alt fa-2x"></i></a>
+            <a class="login nav-link" href="{{ route('login') }}"><i class="login-icon fas fa-sign-in-alt fa-2x"></i></a>
           </li>
           <li class="nav-item">
             <a class="register nav-link" href="{{ route('register') }}"><i class="reg-icon fas fa-user-plus fa-2x"></i></a>
