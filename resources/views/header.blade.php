@@ -42,7 +42,7 @@
               </div>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" type="button"
-                      onclick="location.href=''">
+                      onclick="location.href='{{ route('articles.create') }}'">
                 <i class="fas fa-pen mr-2 fa-1x"></i>投稿
               </button>
               <div class="dropdown-divider"></div>

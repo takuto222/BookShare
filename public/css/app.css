@@ -128,9 +128,7 @@
  * content
  * -------------------------------- */
 .content {
-  display: block;
-  flex: 1;
-  margin: 20px;
+  margin: 20px 0;
 }
 
 

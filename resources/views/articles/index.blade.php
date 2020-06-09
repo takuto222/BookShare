@@ -36,7 +36,7 @@
   <!-- main content -->
   <div class="main-contents">
       <div class="main-content">
-        @include('articles.book-list')
+        @include('articles.book_list')
       </div>
       <div class="side-content">
         @include('sidemenu')
