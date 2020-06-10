@@ -17,7 +17,6 @@ $(function () {
       fileArea.classList.remove('dragenter');
       var files = evt.dataTransfer.files;
       fileInput.files = files;
-      console.log(files[0]);
       photoPreview('onChenge',files[0]);
   });
 
@@ -140,13 +139,24 @@ $(function () {
   // アイテムが選択されたときの処理
   $container.on('click', 'a', function(event){
     event.preventDefault();
-    var itemIndex = $(this).parent().attr('id');
-    $("#title").val(itemInfo.title[itemIndex]);
-    $("#author").val(itemInfo.author[itemIndex]);
-    $("#publication_date").val(itemInfo.publishedDate[itemIndex]);
-    $("#price").val(itemInfo.price[itemIndex]);
-    $("#score").val(itemInfo.averageRating[itemIndex]);
-    $("#caption").val(itemInfo.caption[itemIndex]);
+    var itemIndex = $(this).parent().attr('id'),
+    id_name_list = {
+      "title": itemInfo.title[itemIndex],
+      "author": itemInfo.author[itemIndex],
+      "publication_date": itemInfo.publishedDate[itemIndex],
+      "price": itemInfo.price[itemIndex],
+      "score": itemInfo.averageRating[itemIndex],
+      "caption": itemInfo.caption[itemIndex],
+      "default_book_image": itemInfo.thumbnail[itemIndex]
+    };
+
+    $.each( id_name_list, function( key, value ) {
+      if(value != null) {
+        $('#' + key).val(value);
+      } else {
+        $('#' + key).val("不明");
+      };
+    });
 
     var preview = $("#previewArea").get(0);
     $("#previewArea").empty();
@@ -155,8 +165,5 @@ $(function () {
     img.setAttribute("id", "previewImage");
     preview.appendChild(img);
   });
-
-  $('.basic-info')
-
 
 });

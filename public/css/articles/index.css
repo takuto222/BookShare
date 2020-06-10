@@ -47,7 +47,6 @@
   transition: background-color 0.1s;
 }
 .scroll-list .scroll-item:nth-of-type(even) a {
-  background: url('../images/bg-slash.gif');
   background-color: #fafafa;
 }
 .scroll-list .scroll-item a:hover {

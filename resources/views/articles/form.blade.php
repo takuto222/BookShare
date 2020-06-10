@@ -30,6 +30,9 @@
       <p class="annotation"><sup>※</sup>本の画像がアップロードされていない場合には、デフォルトのものが使用されます</p>
       <div class="preview" id="previewArea"></div>
     </div>
+    <div>
+      <input id="default_book_image" type="hidden" name="default_book_image" value="{{ old('default_book_image') }}">
+    </div>
   </div>
 
   <div class="col-8">
@@ -56,7 +59,7 @@
             @if ($item_index_list[$index] === "title")
             <input type="text" id="{{ $item_index_list[$index] }}" name="{{ $item_index_list[$index] }}" class="form-control basic-info" required value="{{ old($item_label, '不明') }}">
             @else
-            <input type="text" id="{{ $item_index_list[$index] }}" name="{{ $item_index_list[$index] }}" class="form-control basic-info" value="不明">
+            <input type="text" id="{{ $item_index_list[$index] }}" name="{{ $item_index_list[$index] }}" class="form-control basic-info" value="{{ old($item_label, '不明') }}">
             @endif
           </div>
           @endforeach
@@ -67,17 +70,27 @@
 
 </div>
 
-<div class="form-group ">
-  <label>見出し</label>
-  <textarea id="caption" name="caption" required class="form-control" rows="8" placeholder="見出し">{{ old('caption') }}</textarea>
-</div>
+<div class="main-content-wrapper">
+  <div class="form-group mt-5">
+    <label>見出し</label>
+    <textarea id="caption" name="caption" required class="form-control" rows="8" placeholder="見出し(1000文字以内)">{{ old('caption') }}</textarea>
+  </div>
 
-<div class="form-group">
-  <label>本文</label>
-  <textarea name="body" required class="form-control" rows="16" placeholder="本文">{{ old('body') }}</textarea>
-</div>
+  <div class="form-group mt-5">
+    <label>本文</label>
+    <textarea name="body" required class="form-control" rows="16" placeholder="本文(2000文字以内)">{{ old('body') }}</textarea>
+  </div>
 
-<div class="form-group">
-  <label for="file1">添付ファイル（動画, 画像, pdf）</label>
-  <input type="file" id="upfile" name="upfile" class="form-control-file" accept="video/*, image/*, application/pdf" />
+  <div class="form-group mt-5">
+    <label for="file1">添付ファイル : 動画(100M以下), 画像, pdf</label>
+    <input type="file" id="upfile" name="upfile" class="form-control-file" accept="video/*, image/*, application/pdf" />
+  </div>
+
+  <label for="upmovie-url" class="mt-3">動画へのURL (100Mを超える動画を追加したい場合)</label>
+  <div class="input-group mb-5">
+    <div class="input-group-prepend">
+      <span class="input-group-text " id="basic-addon3">URL：</span>
+    </div>
+    <input name="upmovie_url" type="text" class="form-control" id="upmovie-url" aria-describedby="basic-addon3">
+  </div>
 </div>

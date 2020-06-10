@@ -29,6 +29,9 @@
 /* --------------------------------
  * article form
  * -------------------------------- */
+.main-content-wrapper * {
+   font-size: 100%;
+ }
 .book_info {
   width: 100%;
   margin: 20px auto;
