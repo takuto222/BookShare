@@ -152,9 +152,9 @@ $(function () {
 
     $.each( id_name_list, function( key, value ) {
       if(value != null) {
-        $('#' + key).val(value);
+        $('#' + key).trigger('focus').val(value);
       } else {
-        $('#' + key).val("不明");
+        $('#' + key).trigger('focus').val("不明");
       };
     });
 

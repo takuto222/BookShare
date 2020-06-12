@@ -23,7 +23,7 @@
           <div class="card-text">
             <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
               @include('articles.form')
-              <button type="submit" class="btn blue-gradient btn-block">投稿する</button>
+              <button type="submit" class="btn blue-gradient btn-block mt-5">投稿する</button>
             </form>
           </div>
         </div>
@@ -31,11 +31,4 @@
     </div>
   </div>
 </div>
-
-<style>
-.create-article-form-container * {
-  font-size: 120%;
-}
-</style>
-
 @endsection

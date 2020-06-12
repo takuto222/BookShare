@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="article-contents container">
+<div class="article-contents-wrapper container">
   <!-- slide show -->
   <div class="slide-show">
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
@@ -102,6 +102,11 @@
 <style media="screen">
 .slide-show {
   margin-top: -20px;
+}
+.article-contents-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0
 }
 </style>
 @endsection

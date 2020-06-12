@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <h3 class="serch-result-heading">検索結果：</h3>
+  <h3 class="serch-result-heading">検索結果</h3>
   <div class="search-results-wrapper" id="container">
     <ul id="search-results"></ul>
   </div>
@@ -28,7 +28,15 @@
           <input id="fileInput" type="file" accept="image/*" value="ファイルを選択" name="book_img" onChange="photoPreview(event)">
       </p>
       <p class="annotation"><sup>※</sup>本の画像がアップロードされていない場合には、デフォルトのものが使用されます</p>
-      <div class="preview" id="previewArea"></div>
+      <div class="preview" id="previewArea">
+      @isset($article->book_img)
+        @if (URL::isValidUrl($article->book_img))
+        <img id="previewImage" class='book-image card-img-top' src="{{ $article->book_img }}" alt="本の画像">
+        @else
+        <img id="previewImage" class='book-image card-img-top' src="{{ asset('storage/images/'.$article->book_img) }}" alt="本の画像">
+        @endif
+      @endisset
+      </div>
     </div>
     <div>
       <input id="default_book_image" type="hidden" name="default_book_image" value="{{ old('default_book_image') }}">
@@ -38,58 +46,87 @@
   <div class="col-8">
     <div class="basic-info-wrapper">
       <table border="0">
-        @php
-          $item_label_list = array( "タイトル", "著者", "出版日", "価格", "評点");
-          $item_index_list = array("title", "author", "publication_date", "price", "score")
-        @endphp
-
-        @isset($book_info)
-          <!-- for edit request -->
-          @foreach ($book_info as $index => $bi)
-          <div class="md-form">
-            <label for="{{ $item_index_list[$index] }}">{{ $item_label_list[$index] }}</label>
-            <input type="text" name="{{ $item_index_list[$index] }}" class="form-control" value="{{ old($item_label_list[$index]) }}" value="{{ $bi }}">
-          </div>
-          @endforeach
-        @else
-          @foreach ($item_label_list as $index => $item_label)
-          <!-- for  new article creation request -->
-          <div class="md-form">
-            <label>{{ $item_label }}</label>
-            @if ($item_index_list[$index] === "title")
-            <input type="text" id="{{ $item_index_list[$index] }}" name="{{ $item_index_list[$index] }}" class="form-control basic-info" required value="{{ old($item_label, '不明') }}">
-            @else
-            <input type="text" id="{{ $item_index_list[$index] }}" name="{{ $item_index_list[$index] }}" class="form-control basic-info" value="{{ old($item_label, '不明') }}">
-            @endif
-          </div>
-          @endforeach
-        @endisset
+        <div class="md-form">
+          <label for="title">タイトル</label>
+          <input type="text" id="title" name="title" class="form-control basic-info" required value="{{ $article->title ?? old('title') }}">
+        </div>
+        <div class="md-form">
+          <label for="author">著者</label>
+          <input type="text" id="author" name="author" class="form-control basic-info" required value="{{ $article->author ?? old('author') }}">
+        </div>
+        <div class="md-form">
+          <label for="publication_date">出版日</label>
+          <input type="text" id="publication_date" name="publication_date" class="form-control basic-info" required value="{{ $article->publication_date ?? old('publication_date') }}">
+        </div>
+        <div class="md-form">
+          <label for="price">価格</label>
+          <input type="text" id="price" name="price" class="form-control basic-info" required value="{{ $article->price ?? old('price') }}">
+        </div>
+        <div class="md-form">
+          <label for="score">評点</label>
+          <input type="text" id="score" name="score" class="form-control basic-info" required value="{{ $article->score ?? old('score') }}">
+        </div>
       </table>
     </div>
   </div>
-
 </div>
 
 <div class="main-content-wrapper">
-  <div class="form-group mt-5">
-    <label>見出し</label>
-    <textarea id="caption" name="caption" required class="form-control" rows="8" placeholder="見出し(1000文字以内)">{{ old('caption') }}</textarea>
+  <div class="form-group">
+    <label class="input-header">見出し</label>
+    <textarea id="caption" name="caption" required class="form-control" rows="8" placeholder="見出し(1000文字以内)">{{ $article->caption ?? old('caption') }}</textarea>
   </div>
 
-  <div class="form-group mt-5">
-    <label>本文</label>
-    <textarea name="body" required class="form-control" rows="16" placeholder="本文(2000文字以内)">{{ old('body') }}</textarea>
+  <div class="form-group">
+    <label class="input-header">本文</label>
+    <textarea name="body" required class="form-control" rows="16" placeholder="本文(2000文字以内)">{{ $article->body ?? old('body') }}</textarea>
   </div>
 
-  <div class="form-group mt-5">
+  @isset($article->body)
+    <h2 class="input-header">既存の添付ファイル</h2>
+    @if (URL::isValidUrl($article->upfile))
+    @php
+      $keys = parse_url($article->upfile);
+      $path = explode("/", $keys['path']);
+      $url = "https://www.youtube.com/embed/".end($path);
+    @endphp
+    <iframe id="existing_attachment"
+      title="existing_attachment"
+      width="300"
+      height="200"
+      src="{{ $url }}"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <a class="file-url" href="{{ $article->upfile }}">{{ $article->upfile }}</a>
+    @else
+    <iframe id="existing_attachment"
+      title="existing_attachment"
+      width="300"
+      height="200"
+      src="{{ asset('storage/images/'.$article->upfile) }}"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    @endif
+  @endisset
+
+  <div class="form-group">
+    @isset($article)
+      <h2 class="input-header">添付ファイルの置き換え（アップロード可能なファイルは１ファイルのみ）</h2>
+    @else
+      <h2 class="input-header">添付ファイル（アップロード可能なファイルは１ファイルのみ）</h2>
+    @endisset
     <label for="file1">添付ファイル : 動画(100M以下), 画像, pdf</label>
     <input type="file" id="upfile" name="upfile" class="form-control-file" accept="video/*, image/*, application/pdf" />
   </div>
 
   <label for="upmovie-url" class="mt-3">動画へのURL (100Mを超える動画を追加したい場合)</label>
-  <div class="input-group mb-5">
+  <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text " id="basic-addon3">URL：</span>
+      <span class="input-group-text" id="basic-addon3">URL：</span>
     </div>
     <input name="upmovie_url" type="text" class="form-control" id="upmovie-url" aria-describedby="basic-addon3">
   </div>
