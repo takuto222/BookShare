@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.article-info {
+  margin: 20px 0;
+}
+.article-title {
+  display: inline-block;
+  border-bottom: medium solid #ffef77;
+}
+.book-mark {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+}
+.book-mark button {
+  width: 100px;
+}
+.item-label {
+  margin: 20px 0 10px 0;
+  font-size: 150%;
+}
+
+.order-list {
+  margin: 10px;
+  padding: 10px 2px;
+  background-color: #f8f9fa;
+}
+.order-list h2 {
+  margin: 5px 0 15px 0;
+  text-align: center;
+  color: black;
+}
+.order-list ul {
+  text-align: center;
+}
+.order-list li {
+  display: inline-block;
+  margin: 0 3px;
+}
+.order-list a {
+  display: inline-block;
+}
+.order-list img {
+  height: 50px;
+  background-color: #fff;
+}
+.order-list img:hover {
+  border: 3px solid #217dc7;
+}

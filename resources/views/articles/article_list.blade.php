@@ -51,7 +51,7 @@
       <!-- modal -->
       @endif
 
-      <a href="#">
+      <a href="{{ route('articles.show', ['article' => $article]) }}">
         <div class="card-body article">
           <div class='image-wrapper'>
             @if (URL::isValidUrl($article->book_img))
