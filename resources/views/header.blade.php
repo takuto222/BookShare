@@ -38,11 +38,11 @@
             <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
               <div class="login-user-info">
                 <i class="fas fa-user-circle mr-4 fa-4x"></i>
-                <p class="mt-2">ようこそ,<br>takuto さん</p>
+                <p class="mt-2">ようこそ,<br>{{ Auth::user()->name }} さん</p>
               </div>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" type="button"
-                      onclick="location.href=''">
+                      onclick="location.href='{{ route('articles.create') }}'">
                 <i class="fas fa-pen mr-2 fa-1x"></i>投稿
               </button>
               <div class="dropdown-divider"></div>

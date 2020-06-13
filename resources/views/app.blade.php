@@ -15,9 +15,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
   <!-- styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  @yield('css')
-   <!-- js -->
-  @yield('js')
 </head>
 
 <body>
@@ -37,6 +34,10 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+  <!-- style to content -->
+  @yield('css')
+  <!-- js to content -->
+  @yield('js')
 </body>
 
 </html>

@@ -3,75 +3,19 @@
 <div class="sidemenu">
     <h2 class="heading">RANKING</h2>
     <ol class="ranking">
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
-        </li>
-        <li class="ranking-item">
-            <a href="#">
-                <img class="image" src="{{ asset('images/ranking.jpg') }}" alt="グラフの画像">
-                <span class="order"></span>
-                <p class="title">HTML/CSSの教科書</p>
-            </a>
+      @foreach($articles as $article)
+      <li class="ranking-item">
+          <a href="#">
+            @if (URL::isValidUrl($article->book_img))
+            <img class='image card-img-top' src="{{ $article->book_img }}" alt="本の画像">
+            @else
+            <img class='book-image card-img-top image' src="{{ asset('storage/images/'.$article->book_img) }}" alt="本の画像">
+            @endif
+            <span class="order"></span>
+            <p class='title'>{{ $article->title }}</p>
+          </a>
+      </li>
+      @endforeach
         </li>
     </ol>
 </div>

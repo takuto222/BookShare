@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
+    protected $fillable = [
+        'title',
+        'author',
+        'publication_date',
+        'price',
+        'score',
+        'caption',
+        'body',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo('App\User');
