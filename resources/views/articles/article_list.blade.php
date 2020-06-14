@@ -64,6 +64,19 @@
           <p class='author'>
             {{ $article->author }}
           </p>
+          <!-- いいね数 -->
+          <div class="card-body pt-0 pb-2 pl-1">
+            <div class="card-text">
+              <div id="article-like">
+                @if ($article->isLikedBy(Auth::user()))
+                  <i class="fas fa-heart heart-active"></i> {{ $article->count_likes }}
+                @else
+                  <i class="fas fa-heart heart"></i> {{ $article->count_likes }}
+                @endif
+              </div>
+            </div>
+          </div>
+
         </div>
       </a>
     </div>
@@ -110,5 +123,11 @@
 .pagination {
   width: 100%;
   margin:20px 40%;
+}
+.heart-active {
+  color: red;
+}
+.heart {
+  color: #7a7a7a;
 }
 </style>

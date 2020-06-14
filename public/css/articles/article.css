@@ -1,25 +1,22 @@
 @charset "UTF-8";
-
+.heading.media-body {
+  font-size: 50%;
+  padding: 0 10px;
+}
+.heding-info > p {
+  display: inline-block;
+}
 .article-info {
   margin: 20px 0;
 }
 .article-title {
   display: inline-block;
-  border-bottom: medium solid #ffef77;
-}
-.book-mark {
-  width: 100%;
-  text-align: center;
-  margin: 10px auto;
-}
-.book-mark button {
-  width: 100px;
+  /* border-bottom: 4px solid #b2dcf7; */
 }
 .item-label {
   margin: 20px 0 10px 0;
   font-size: 150%;
 }
-
 .order-list {
   margin: 10px;
   padding: 10px 2px;
@@ -41,9 +38,46 @@
   display: inline-block;
 }
 .order-list img {
-  height: 50px;
+  height: 80px;
   background-color: #fff;
 }
 .order-list img:hover {
   border: 3px solid #217dc7;
+}
+.icon-list {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+.icon-label {
+  font-size: 7px;
+}
+#like {
+  color: black;
+}
+#bookmark {
+  color: black;
+}
+#follow {
+  color: black;
+}
+.icon-btn {
+  color: gray;
+}
+#like-icon.active {
+  color: red;
+}
+#bookmark-icon.active {
+  color: green;
+}
+#follow-icon.active {
+  color: blue;
+}
+.caption {
+ min-height: 100px;
+}
+.body {
+ min-height: 200px;
 }
