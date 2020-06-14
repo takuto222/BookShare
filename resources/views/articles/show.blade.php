@@ -5,6 +5,9 @@
 @section('css')
     <link href="{{ asset('css/articles/article.css') }}" rel="stylesheet">
 @endsection
+@section('js')
+  <script src="{{ asset('js/articles/ArticleLike.js') }}"></script>
+@endsection
 
 @section('content')
 <div class="article-contents-wrapper container">
