@@ -47,7 +47,7 @@
               </button>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" type="button"
-                      onclick="location.href=''">
+                      onclick="location.href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">
                 <i class="fas fa-user mr-2 fa-1x"></i>マイページ
               </button>
               <div class="dropdown-divider"></div>

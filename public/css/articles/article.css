@@ -3,7 +3,7 @@
   font-size: 50%;
   padding: 0 10px;
 }
-.heding-info > p {
+.heding-info > * {
   display: inline-block;
 }
 .article-info {
