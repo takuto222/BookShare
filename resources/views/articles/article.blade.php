@@ -1,10 +1,14 @@
 <div class="media article-info">
-  <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
+  <a href="{{ route('users.show', ['name' => $article->user->name]) }}">
+    <img src="{{ asset('images/dummy.png') }}" alt="user-icon" class="width="64" height="64"">
+  </a>
   <div class="media-body heading">
     <h2 class="article-title mt-2 mb-3">{{ $article->title }}</h2>
     <div class="heding-info">
-      <p>投稿者：{{ $article->user->name }},</p>
-      <p id="count-likes">いいね数：{{ $article->count_likes }}</p>
+      <u><a href="{{ route('users.show', ['name' => $article->user->name]) }}">
+        <p>投稿者：{{ $article->user->name }}</p>
+      </a></u>
+      <p id="count-likes" class="ml-3">いいね数：{{ $article->count_likes }}</p>
     </div>
   </div>
 </div>
@@ -12,7 +16,7 @@
 <div class="article-like" hidden>
   <div class="initial-is-liked-by">{{ $article->isLikedBy(Auth::user()) }}</div>
   <div class="initial-count-likes">{{ $article->count_likes }}</div>
-  <div class="authorized"> {{ Auth::check() }} </div>
+  <div class="authorized">{{ Auth::check() }}</div>
   <div class="url">{{ route('articles.like', ['article' => $article]) }}</div>
 </div>
 
