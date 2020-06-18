@@ -56,8 +56,8 @@ $(function () {
                 }
 
                 // フォロー数、フォロワー数の表示変更
-                countFollowings.text(data.countFollowings + 'フォロー');
-                countFollowers.text(data.countFollowers + 'フォロワー');
+                countFollowings.text(data.countFollowings + ' フォロー');
+                countFollowers.text(data.countFollowers + ' フォロワー');
             })
             // 通信に失敗した際の処理
             .fail(function(jqXHR, textStatus, errorThrown) {

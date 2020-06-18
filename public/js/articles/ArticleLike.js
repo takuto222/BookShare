@@ -40,8 +40,6 @@ $(function () {
       } else {
         reqType = 'PUT';
       }
-      console.log(reqType);
-      // var req_type = $('')
       $.ajax({
         dataType: "json",
         type: reqType,
@@ -54,7 +52,6 @@ $(function () {
 
           // いいね数の表示変更
           countLikes.text(data.countLikes);
-          console.log(data.countLikes);
       })
       // 通信に失敗した際の処理
       .fail(function(jqXHR, textStatus, errorThrown) {
