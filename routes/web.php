@@ -16,10 +16,12 @@ Route::get('/', 'ArticleController@index')->name('articles.index');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
-// いいね機能のルーティング
+// いいね、ブックマーク機能のルーティング
 Route::prefix('articles')->name('articles.')->group(function () {
     Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
     Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
+    Route::put('/{article}/bookmark', 'ArticleController@bookmark')->name('bookmark')->middleware('auth');
+    Route::delete('/{article}/bookmark', 'ArticleController@unbookmark')->name('unbookmark')->middleware('auth');
 });
 
 // ユーザページ用のルーティング

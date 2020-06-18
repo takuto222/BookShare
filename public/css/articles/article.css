@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .heading.media-body {
   font-size: 50%;
   padding: 0 10px;
@@ -11,7 +12,6 @@
 }
 .article-title {
   display: inline-block;
-  /* border-bottom: 4px solid #b2dcf7; */
 }
 .item-label {
   margin: 20px 0 10px 0;
@@ -43,37 +43,6 @@
 }
 .order-list img:hover {
   border: 3px solid #217dc7;
-}
-.icon-list {
-  width: 100%;
-  text-align: center;
-  margin: 10px auto;
-  display: flex;
-  justify-content: center;
-}
-.icon-label {
-  font-size: 7px;
-}
-#like {
-  color: black;
-}
-#bookmark {
-  color: black;
-}
-#follow {
-  color: black;
-}
-.icon-btn {
-  color: gray;
-}
-#like-icon.active {
-  color: red;
-}
-#bookmark-icon.active {
-  color: green;
-}
-#follow-icon.active {
-  color: blue;
 }
 .caption {
  min-height: 100px;
