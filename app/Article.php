@@ -51,7 +51,7 @@ class Article extends Model
     public function isBookmarkedBy(?User $user): bool
     {
         return $user
-            ? (bool)$this->likes->where('id', $user->id)->count()
+            ? (bool)$this->bookmarks->where('id', $user->id)->count()
             : false;
     }
 

@@ -4,7 +4,7 @@
 
 @section('css')
   <link href="{{ asset('css/articles/show.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/articles/article.css') }}" rel="stylesheet">  
+  <link href="{{ asset('css/articles/article.css') }}" rel="stylesheet">
 @endsection
 @section('js')
   <script src="{{ asset('js/articles/ArticleIcon.js') }}"></script>
@@ -27,9 +27,8 @@
   <div class="article-like" hidden>
     <div class="initial-is-liked-by">{{ $article->isLikedBy(Auth::user()) }}</div>
     <div class="initial-count-likes">{{ $article->count_likes }}</div>
-    <div class=".initial-is-bookmarked-by">{{ $article->isBookmarkedBy(Auth::user()) }}</div>
+    <div class="initial-is-bookmarked-by">{{ $article->isBookmarkedBy(Auth::user()) }}</div>
     <div class="authorized">{{ Auth::check() }}</div>
-    <div class="url">{{ route('articles.like', ['article' => $article]) }}</div>
   </div>
 
   <div id="iconList" class="icon-list mt-0">

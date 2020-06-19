@@ -1,5 +1,4 @@
 $(function () {
-
     var initLikeState = Boolean($('.initial-is-liked-by').text()),        // いいねボタンの初期状態
     initBookmarkState = Boolean($('.initial-is-bookmarked-by').text()),   // ブックマークボタンの初期状態
     initCountLikes = $('.initial-count-likes').text(),                    // いいね数の初期状態
@@ -16,6 +15,7 @@ $(function () {
     if (initLikeState) {
         likeIcon.toggleClass('active');
     }
+
     if (initBookmarkState) {
         bookmarkIcon.toggleClass('active');
     }
@@ -30,6 +30,7 @@ $(function () {
         event.preventDefault();
         icon = $(this).children('i');
         url = $(this).attr('href');
+
         // 状態の読み取り
         if (icon.hasClass('active')) {
           reqType = 'DELETE';
@@ -45,7 +46,7 @@ $(function () {
         .done(function(data, status) {
             // いいね,ブックマークの表示変更
             icon.toggleClass('active');
-
+            console.log(data.id);
             // いいね数の表示変更
             if (icon.attr('id') == 'like-icon') {
               countLikes.text(data.countLikes);

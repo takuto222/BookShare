@@ -12,32 +12,45 @@ $(function () {
     // ----------------------------------------------------
     //              ページネーション機能
     // ----------------------------------------------------
-    var $items = [$('.shelf-item'), $('.post-item'), $('.reviews-item')], //表示アイテム
-    $containers = [$('#shelf_container'), $('#post_container'), $('#reviews_container')], // 表示先
-    $paginationList = [$('#shelf-pagination'), $('#post-pagination'), $('#reviews-pagination')] // 各ページのページネーション
-    maxPageNumList = [0, 0, 0],             // 最大ページ数
-    startItemIndexList = [0, 0, 0],         // 表示アイテムの開始インデックス
-    endItemIndexList = [0, 0, 0],           // 表示アイテムの終了インデックス
-    perPageList = [9, 9, 9];                // １ページあたりの表示アイテム数
+    var $items = [                                 //表示アイテム
+      $('.shelf-like-item'),
+      $('.shelf-bm-item'),
+      $('.post-item'),
+      $('.reviews-private-item'),
+      $('.reviews-public-item'),
+    ],
+    $containers = [                                 // 表示先
+      $('#shelf-like-container'),
+      $('#shelf-bm-container'),
+      $('#post-container'),
+      $('#reviews-private-container'),
+      $('#reviews-public-container'),
+    ],
+    $paginationList = [                            // 各ページのページネーション
+      $('#shelf-like-pagination'),
+      $('#shelf-bm-pagination'),
+      $('#post-pagination'),
+      $('#reviews-private-pagination'),
+      $('#reviews--public-pagination'),
+    ],
+    maxPageNumList = [0, 0, 0, 0, 0,],              // 最大ページ数
+    startItemIndexList = [0, 0, 0, 0, 0,],          // 表示アイテムの開始インデックス
+    endItemIndexList = [0, 0, 0, 0, 0,],            // 表示アイテムの終了インデックス
+    perPageList = 9;                                // １ページあたりの表示アイテム数
 
     // 初期化処理
     $.each($items, function(index, $item) {
         // 一度アイテムを削除して、表示し直す
         $item.remove();
-        showItems($containers[index], $item, startItemIndexList[index], perPageList[index]);
+        showItems($containers[index], $item, startItemIndexList[index], perPageList);
         // ページネーションを使って、アイテムを表示
-        maxPageNumList[index] = Math.ceil($item.length / perPageList[index]);
-        drawPagination($paginationList[index], 1, maxPageNumList[index], perPageList[index], $items[index], $containers[index]);
+        maxPageNumList[index] = Math.ceil($item.length / perPageList);
+        drawPagination($paginationList[index], 1, maxPageNumList[index], perPageList, $items[index], $containers[index]);
     });
 
     function drawPagination($pagination, pageNum, maxPageNum, perPage, $item, $container) {
       // 一度更にする
       $pagination.twbsPagination('destroy');
-      console.log($pagination);
-      console.log(pageNum);
-      console.log(maxPageNum);
-      console.log(perPage);
-      console.log($container);
 
       // ページネーションを描画する
       $pagination.twbsPagination({
