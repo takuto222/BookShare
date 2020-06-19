@@ -120,4 +120,24 @@ class ArticleController extends Controller
         ];
     }
 
+    // ============ ブックマーク機能関連のアクション =============
+    public function bookmark(Request $request, Article $article)
+    {
+        $article->bookmarks()->detach($request->user()->id);
+        $article->bookmarks()->attach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+        ];
+    }
+
+    public function unbookmark(Request $request, Article $article)
+    {
+        $article->bookmarks()->detach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+        ];
+    }
+
 }

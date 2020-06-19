@@ -13,13 +13,6 @@
   </div>
 </div>
 
-<div class="article-like" hidden>
-  <div class="initial-is-liked-by">{{ $article->isLikedBy(Auth::user()) }}</div>
-  <div class="initial-count-likes">{{ $article->count_likes }}</div>
-  <div class="authorized">{{ Auth::check() }}</div>
-  <div class="url">{{ route('articles.like', ['article' => $article]) }}</div>
-</div>
-
 <div class="row book_info form-group">
 
   <div class="col-4 drag-drop-area" id="dragDropArea">
@@ -67,22 +60,6 @@
             <li><a href="#"><img src="{{ asset('images/honto.png') }}" alt="honto-logo"></a></li>
             <li><a href="#"><img src="{{ asset('images/kinokuniya.png') }}" alt="kinokuniya-logo"></a></li>
           </ul>
-        </div>
-
-        <div class="icon-list mt-5">
-          <meta name="token" content="{{ csrf_token() }}">
-          <a href="{{ route('articles.like', ['article' => $article]) }}" id='like' class="mr-5">
-            <i id="like-icon" class="fas fa-heart fa-3x icon-btn"></i>
-            <p class="icon-label">いいね</p>
-          </a>
-          <a href="{{ route('articles.index') }}" id='bookmark' class="mr-5">
-            <i id="bookmark-icon" class="fas fa-bookmark fa-3x icon-btn"></i>
-            <p class="icon-label">ブックマーク</p>
-          </a>
-          <a href="{{ route('articles.index') }}" id='follow' class="mr-5">
-            <i id="follow-icon" class="fas fa-user-plus fa-3x icon-btn"></i>
-            <p class="icon-label">フォロー</p>
-          </a>
         </div>
       </div>
     </div>
