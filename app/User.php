@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -84,5 +85,10 @@ class User extends Authenticatable
     public function reviews(): HasMany
     {
         return $this->hasMany('App\Review');
+    }
+
+    public function profiles(): BelongsTo
+    {
+        return $this->belongsTo('App\Profile');
     }
 }

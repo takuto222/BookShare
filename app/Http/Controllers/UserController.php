@@ -3,15 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Profile;
 use App\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function edit(User $user)
+    {
+        $profile = Profile::where('user_id', $user->id)->first();
+        return view('users.edit', ['profile' => $profile]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+
+        $profile = Profile::where('user_id', $user->id)->first() ?: new Profile;
+
+        $profile->self_intro =  $request->self_intro;
+        $profile->recommend =  $request->recommend;
+        $profile->user_id = $request->user()->id;
+
+        // アップされた本の画像、添付ファイルをハッシュ化してから保存
+        if ($request->hasFile('file')) {
+            $request->file('file')->store('/public/images');
+            $profile->file = $request->file('file')->hashName();
+        }
+
+        $profile->save();
+        return redirect('/');
+    }
+
     public function show(string $name)
     {
         $user = User::where('name', $name)->first();
-
+        $profile = Profile::where('user_id', $user->id)->first();
         $like_articles = $user->likes->sortByDesc('created_at');
         $bookmark_articles = $user->bookmarks->sortByDesc('created_at');
         $post_articles = $user->articles->sortByDesc('created_at');
@@ -20,6 +47,7 @@ class UserController extends Controller
 
         return view('users.show', [
             'user' => $user,
+            'profile' => $profile,
             'like_articles' => $like_articles,
             'bookmark_articles' => $bookmark_articles,
             'post_articles' => $post_articles,

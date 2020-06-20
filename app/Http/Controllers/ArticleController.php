@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use App\Article;
 use App\Review;
 use App\Http\Requests\ArticleRequest;
@@ -17,8 +18,13 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::where('status', 1)->orderBy('created_at', 'DESC')->paginate(9);
+        $user = \Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
 
-        return view('articles.index', ['articles' => $articles]);
+        return view('articles.index', [
+          'articles' => $articles,
+          'profile' => $profile,
+        ]);
     }
 
     public function create()

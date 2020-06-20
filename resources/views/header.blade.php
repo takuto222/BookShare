@@ -5,7 +5,7 @@
     <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">
         <img class='navbar-logo' src="{{ asset('images/logo.png') }}">
-        {{ config('app.name', 'Laravel') }}
+        {{ config('app.name', 'BookShare') }}
       </a>
 
       <form class="search-box">
@@ -51,6 +51,11 @@
                 <i class="fas fa-user mr-2 fa-1x"></i>マイページ
               </button>
               <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button"
+              onclick="location.href='{{ route("users.edit", ["user" => Auth::user()]) }}'">
+                <i class="fas fa-id-card mr-2 fa-1x"></i>プロフィールを編集
+              </button>
+              <div class="dropdown-divider"></div>
               <button form="logout-button" class="dropdown-item" type="submit">
                 <i class="fas fa-sign-out-alt mr-2 fa-1x"></i>ログアウト
               </button>
@@ -66,6 +71,7 @@
     </div>
   </nav>
 </header>
+
 <style>
 .dropdown-menu {
   width: 180px;
