@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Review;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 
@@ -89,9 +90,14 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function show(Article $article)
+    public function show(Article $article, Review $review)
     {
-        return view('articles.show', ['article' => $article]);
+        $reviews = $review->where('article_id', $article->id)->orderBy('created_at', 'DESC')->paginate(9);
+
+        return view('articles.show', [
+          'article' => $article,
+          'reviews' => $reviews,
+        ]);
     }
 
     // ============ いいね機能関連のアクション =============
@@ -138,6 +144,17 @@ class ArticleController extends Controller
         return [
             'id' => $article->id,
         ];
+    }
+
+    // ============ レビュー機能関連のアクション =============
+    public function review(Request $request, Article $article, Review $review)
+    {
+        $review->fill($request->all());
+        $review->user_id = $request->user()->id;
+        $review->article_id = $article->id;
+        $review->public = $request->public ? true: false;
+        $review->save();
+        return redirect()->back();
     }
 
 }

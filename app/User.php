@@ -80,4 +80,9 @@ class User extends Authenticatable
     {
         return $this->followings->count();
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany('App\Review');
+    }
 }

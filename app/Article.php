@@ -42,7 +42,8 @@ class Article extends Model
         return $this->likes->count();
     }
 
-    // ブックマーク機能関係
+    // ================ ブックマーク機能関係 =================
+
     public function bookmarks(): BelongsToMany
     {
         return $this->belongsToMany('App\User', 'bookmarks')->withTimestamps();
@@ -53,6 +54,13 @@ class Article extends Model
         return $user
             ? (bool)$this->bookmarks->where('id', $user->id)->count()
             : false;
+    }
+
+    // ================ レビュー機能関係 =================
+
+    public function reviews(): BelongsTo
+    {
+        return $this->belongsTo('App\Review', 'article_id');
     }
 
 }

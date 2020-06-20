@@ -8,6 +8,14 @@ $(function () {
           $('#bookmark-articles-wrapper').toggleClass("hidden");
     });
 
+    // ----------------------------------------------------
+    //      レビューした記事の表示切り替え(Public, private)
+    // ----------------------------------------------------
+    $('.review-item-selection').on('change', function(event) {
+          $('#reviews-public-wrapper').toggleClass("hidden");
+          $('#reviews-plivate-wrapper').toggleClass("hidden");
+    });
+
 
     // ----------------------------------------------------
     //              ページネーション機能
@@ -56,7 +64,7 @@ $(function () {
       $pagination.twbsPagination({
           startPage : pageNum,
           // totalPages: maxPageNum,
-           totalPages: 3, // reviewsがないためにエラーが出るので仮固定
+          totalPages: 3, // reviewsがないためにエラーが出るので仮固定
           first: '最初',
           prev : '前',
           next : '次',
