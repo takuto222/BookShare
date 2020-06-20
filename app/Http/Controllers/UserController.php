@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Review;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,12 +15,16 @@ class UserController extends Controller
         $like_articles = $user->likes->sortByDesc('created_at');
         $bookmark_articles = $user->bookmarks->sortByDesc('created_at');
         $post_articles = $user->articles->sortByDesc('created_at');
+        $public_reviews = $user->reviews->where('public',  1)->sortByDesc('created_at');
+        $private_reviews = $user->reviews->where('public', 0)->sortByDesc('created_at');
 
         return view('users.show', [
             'user' => $user,
             'like_articles' => $like_articles,
             'bookmark_articles' => $bookmark_articles,
             'post_articles' => $post_articles,
+            'public_reviews' => $public_reviews,
+            'private_reviews' => $private_reviews,
         ]);
     }
 
