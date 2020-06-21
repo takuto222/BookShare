@@ -5,7 +5,7 @@
     <div class="card mb50">
       @if( Auth::id() === $article->user_id )
       <!-- dropdown -->
-      <div class="ml-auto card-text">
+      <div class="ml-auto card-text dropdown-wrapper">
         <div class="dropdown">
           <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <button type="button" class="btn btn-link text-muted m-0 p-2">
@@ -49,13 +49,17 @@
         </div>
       </div>
       <!-- modal -->
+      @else
+      <div class="ml-auto card-text dropdown-wrapper">
+         <!-- 投稿者以外にはドロップダウンメニューは表示しない -->
+      </div>
       @endif
 
       <a href="{{ route('articles.show', ['article' => $article]) }}">
         <div class="card-body article">
           <div class='image-wrapper'>
             @if (URL::isValidUrl($article->book_img))
-            <img class='book-image card-img-top' src="{{ $article->book_img }}" alt="本の画像">
+            <img class='book-image card-img-top mt-1' src="{{ $article->book_img }}" alt="本の画像">
             @else
             <img class='book-image card-img-top' src="{{ asset('storage/images/'.$article->book_img) }}" alt="本の画像">
             @endif
@@ -87,6 +91,9 @@
 <div class="pagination">{{ $articles->links() }}</div>
 
 <style media="screen">
+.dropdown-wrapper {
+  height: 15px;
+}
 .article-list-heading {
   padding-right: 30px;
 }
@@ -94,10 +101,10 @@
   margin-bottom: 30px;
   white-space: nowrap;
   overflow: hidden;
-  height: 330px;
+  height: 360px;
 }
 .article {
-  height: 300px;
+  height: 340px;
   overflow: hidden;
 }
 .book-image {
