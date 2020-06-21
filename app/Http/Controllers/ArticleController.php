@@ -112,7 +112,7 @@ class ArticleController extends Controller
         ->where('title','like','%'.$keyword.'%')
         ->orWhere('author','like','%'.$keyword.'%')
         ->orderBy('created_at', 'DESC')->paginate(9);
-        
+
         return view('articles.search', [
           'articles' => $articles,
         ]);

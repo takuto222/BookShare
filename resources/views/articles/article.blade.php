@@ -1,6 +1,7 @@
 <div class="media article-info">
   <a href="{{ route('users.show', ['name' => $article->user->name]) }}">
-    <img src="{{ asset('images/dummy.png') }}" alt="user-icon" class="width="64" height="64"">
+    <i class="fas fa-user-circle fa-5x mr-3 mt-3" style="color: gray;"></i>
+    <!-- <img src="{{ asset('images/dummy.png') }}" alt="user-icon" class="width="64" height="64""> -->
   </a>
   <div class="media-body heading">
     <h2 class="article-title mt-2 mb-3">{{ $article->title }}</h2>
@@ -52,7 +53,7 @@
         </tbody>
       </table>
       <div class="side-wrapper">
-        <div class="order-list">
+        <!-- <div class="order-list">
           <h2>本の購入先</h2>
           <ul>
             <li><a href="#"><img src="{{ asset('images/amazon.png') }}" alt="amazon-logo"></a></li>
@@ -60,7 +61,7 @@
             <li><a href="#"><img src="{{ asset('images/honto.png') }}" alt="honto-logo"></a></li>
             <li><a href="#"><img src="{{ asset('images/kinokuniya.png') }}" alt="kinokuniya-logo"></a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
