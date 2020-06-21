@@ -53,46 +53,18 @@
     <h2 class="heading">NEWS</h2>
     <ul class="scroll-list">
         <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-08-23">2015.08.23 SUN</time>
-          <span class="category news">NEWS</span>
-          <span class="title">WORKSを更新しました。</span>
-        </a>
+          <a href="#">
+            <time class="date" datetime="2020-06-20">2020.06.20 SAT</time>
+            <span class="category news">NEWS</span>
+            <span class="title">サイトをオープンしました。</span>
+          </a>
         </li>
         <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-08-12">2015.08.12 WED</time>
-          <span class="category">TOPIC</span>
-          <span class="title">CSSでここまでできる！？ホントに使えるCSSセレクタ10選！</span>
-        </a>
-        </li>
-        <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-08-04">2015.08.04 TUE</time>
-          <span class="category news">NEWS</span>
-          <span class="title">TOPICSを更新しました。</span>
-        </a>
-        </li>
-        <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-07-25">2015.07.25 SAT</time>
-          <span class="category">TOPIC</span>
-          <span class="title">HTML/CSSコーディングと切っても切れないWebブラウザのシェア動向をチェックしよう</span>
-        </a>
-        </li>
-        <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-07-09">2015.07.09 THU</time>
-          <span class="category">TOPIC</span>
-          <span class="title">HTML5の新しい属性で手軽にフォームバリデーション</span>
-        </a>
-        </li>
-        <li class="scroll-item">
-        <a href="#">
-          <time class="date" datetime="2015-06-30">2015.06.30 TUE</time>
-          <span class="category news">NEWS</span>
-          <span class="title">WORKSを更新しました。</span>
-        </a>
+          <a href="#">
+            <time class="date" datetime="2020-06-21">2020.06.21 SUN</time>
+            <span class="category">TOPIC</span>
+            <span class="title">Google認証機能を追加いたしました。</span>
+          </a>
         </li>
     </ul>
   </div>
@@ -107,6 +79,9 @@
   width: 100%;
   margin: 0 auto;
   padding: 0
+}
+.scroll-list li a {
+  pointer-events: none;
 }
 </style>
 @endsection
