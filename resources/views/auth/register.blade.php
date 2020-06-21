@@ -10,7 +10,9 @@
       <div class="card mt-3">
         <div class="card-body text-center">
           <h2 class="h3 card-title text-center mt-2">ユーザー登録</h2>
-
+          <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-block btn-danger google-regist-btn">
+            <i class="fab fa-google mr-1">oogleで登録</i>
+          </a>
           @include('error_card_list')
 
           <div class="card-text">
@@ -49,6 +51,9 @@
 <style>
 .user-registration-container * {
   font-size: 120%;
+}
+.google-regist-btn * {
+  font-size: 80%;
 }
 </style>
 @endsection
