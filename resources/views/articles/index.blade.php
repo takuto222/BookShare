@@ -14,18 +14,18 @@
       <ol class="carousel-indicators">
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+        <!-- <li data-target="#carouselIndicators" data-slide-to="2"></li> -->
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{ asset('images/slide-1.jpg') }}" alt="第1スライド">
+          <img class="d-block" src="{{ asset('images/slide1.jpg') }}" alt="第1スライド">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('images/slide-2.jpg') }}" alt="第2スライド">
+          <img class="d-block" src="{{ asset('images/slide2.jpg') }}" alt="第2スライド">
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('images/slide-3.jpg') }}" alt="第3スライド">
-        </div>
+        <!-- <div class="carousel-item">
+          <img class="d-block w-100" src="{{ asset('images/slide3.jpg') }}" alt="第3スライド">
+        </div> -->
       </div>
       <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
