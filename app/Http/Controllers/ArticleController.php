@@ -19,7 +19,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::where('status', 1)->orderBy('created_at', 'DESC')->paginate(9);
-        
+
         return view('articles.index', [
           'articles' => $articles,
         ]);
@@ -101,6 +101,20 @@ class ArticleController extends Controller
         return view('articles.show', [
           'article' => $article,
           'reviews' => $reviews,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search');
+
+        $articles = Article::where('status', 1)
+        ->where('title','like','%'.$keyword.'%')
+        ->orWhere('author','like','%'.$keyword.'%')
+        ->orderBy('created_at', 'DESC')->paginate(9);
+        
+        return view('articles.search', [
+          'articles' => $articles,
         ]);
     }
 

@@ -8,7 +8,8 @@
         {{ config('app.name', 'BookShare') }}
       </a>
 
-      <form class="search-box">
+      <form class="search-box" action="{{ route('articles.search') }}">
+        @csrf
         <input class="search-input" type="text" name="search" placeholder="書籍名/著者名">
         <input class="search-button" type="submit" value="検索">
       </form>
