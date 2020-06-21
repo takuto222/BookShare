@@ -1,5 +1,5 @@
 <h2 class="article-list-heading heading mr-5">記事一覧</h2>
-<div class="row justify-content-center container">
+<div class="row justify-content-start container">
   @foreach($articles as $article)
   <div class="col-md-4 article-wrapper">
     <div class="card mb50">

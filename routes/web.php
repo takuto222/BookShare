@@ -22,7 +22,9 @@ Route::prefix('register')->name('register.')->group(function () {
 });
 Route::get('/', 'ArticleController@index')->name('articles.index');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
+Route::get('/articles/search', 'ArticleController@search')->name('articles.search');
 Route::resource('/articles', 'ArticleController')->only(['show']);
+
 
 // いいね、ブックマーク機能のルーティング
 Route::prefix('articles')->name('articles.')->group(function () {
