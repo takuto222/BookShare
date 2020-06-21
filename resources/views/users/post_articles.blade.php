@@ -1,5 +1,5 @@
 <div id="post-articles-wrapper">
-  <ul id="post_container" class="row justify-content-center container item-container">
+  <ul id="post-container" class="row justify-content-center container item-container">
     @foreach($post_articles as $article)
     <li class="col-md-4 article-wrapper post-item">
       <div class="card mb50">
